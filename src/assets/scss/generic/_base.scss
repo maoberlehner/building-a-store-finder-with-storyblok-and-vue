@@ -1,0 +1,42 @@
+@import '~@avalanche/generic-box-sizing-reset';
+@import '~reset-css/sass/reset';
+
+body {
+  line-height: 1.4;
+  background-color: #f9f9f9;
+  color: #222;
+  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.027em;
+}
+
+h2 {
+  font-size: 1.802em;
+}
+
+h3 {
+  font-size: 1.602em;
+}
+
+h4 {
+  font-size: 1.424em;
+}
+
+h5 {
+  font-size: 1.266em;
+}
+
+h6 {
+  font-size: 1.125em;
+}
