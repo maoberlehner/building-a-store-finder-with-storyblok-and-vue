@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import * as storeService from './services/store';
+
 import StoreFinder from './components/StoreFinder.vue';
 
 export default {
@@ -19,6 +21,15 @@ export default {
     return {
       stores: [],
     };
+  },
+  created() {
+    // Initially fetch all stores.
+    this.fetchStores();
+  },
+  methods: {
+    async fetchStores() {
+      this.stores = await storeService.list();
+    },
   },
 };
 </script>
