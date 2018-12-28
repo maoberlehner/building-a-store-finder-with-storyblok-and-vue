@@ -10,46 +10,65 @@ import gmapsInit from '../utils/gmaps';
 export default {
   name: `StoreFinderMap`,
   props: {
+    currentLocation: {
+      default: () => {},
+      type: Object,
+    },
     stores: {
       default: () => [],
       required: true,
       type: Array,
     },
   },
+  watch: {
+    currentLocation() {
+      // Zoom to the nearest store relative
+      // to the current location.
+      const nearestStore = this.stores[0];
+      const { latitude, longitude } = nearestStore.content.address;
+      const latLng = new this.google.maps.LatLng(latitude, longitude);
+      this.geocoder.geocode({ latLng }, (results, status) => {
+        if (status !== `OK` || !results[0]) return;
+
+        this.map.setCenter(results[0].geometry.location);
+        this.map.fitBounds(results[0].geometry.viewport);
+      });
+    },
+  },
   async mounted() {
     try {
-      const google = await gmapsInit();
-      const geocoder = new google.maps.Geocoder();
-      const map = new google.maps.Map(this.$el);
+      this.google = await gmapsInit();
+      this.geocoder = new this.google.maps.Geocoder();
+      this.map = new this.google.maps.Map(this.$el);
 
       // Zoom to Europe.
-      geocoder.geocode({ address: `Europe` }, (results, status) => {
+      this.geocoder.geocode({ address: `Europe` }, (results, status) => {
         if (status !== `OK` || !results[0]) {
           throw new Error(status);
         }
-        map.setCenter(results[0].geometry.location);
-        map.fitBounds(results[0].geometry.viewport);
+        this.map.setCenter(results[0].geometry.location);
+        this.map.fitBounds(results[0].geometry.viewport);
       });
 
       // Initialize and cluster markers.
       const markerClickHandler = (marker) => {
-        map.setZoom(16);
-        map.setCenter(marker.getPosition());
+        this.map.setZoom(16);
+        this.map.setCenter(marker.getPosition());
       };
       const markers = this.stores
         .map((store) => {
-          const marker = new google.maps.Marker({
+          const marker = new this.google.maps.Marker({
             position: {
               lat: store.content.address.latitude,
               lng: store.content.address.longitude,
             },
-            map: map,
+            map: this.map,
           });
           marker.addListener(`click`, () => markerClickHandler(marker));
           return marker;
         });
       // eslint-disable-next-line no-new
-      new MarkerClusterer(map, markers, {
+      new MarkerClusterer(this.map, markers, {
         imagePath: `https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m`,
       });
     } catch (error) {
