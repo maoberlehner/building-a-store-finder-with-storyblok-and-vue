@@ -14,6 +14,13 @@
   resolved "https://registry.yarnpkg.com/@avalanche/generic-box-sizing-reset/-/generic-box-sizing-reset-4.0.0-alpha.5.tgz#aa3934c23a8bc2194b310a8e122f8acd112f5431"
   integrity sha1-qjk0wjqLwhlLMQqOEi+KzREvVDE=
 
+"@avalanche/object-container@^4.0.0-alpha.8":
+  version "4.0.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/@avalanche/object-container/-/object-container-4.0.0-alpha.8.tgz#53345a7e66859bfa199287a3262661d1a48826bc"
+  integrity sha1-UzRafmaFm/oZkoejJiZh0aSIJrw=
+  dependencies:
+    "@avalanche/setting-spacings" "^4.0.0-alpha.6"
+
 "@avalanche/setting-spacings@^4.0.0-alpha.6":
   version "4.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/@avalanche/setting-spacings/-/setting-spacings-4.0.0-alpha.6.tgz#d395e3b4233601336c6e8759dd3499171681dbfb"

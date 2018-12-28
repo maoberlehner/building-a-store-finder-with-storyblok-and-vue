@@ -5,7 +5,7 @@
     </div>
     <div class="StoreFinder__grid">
       <div class="StoreFinder__list">
-        <!-- StoreFinderList -->
+        <StoreFinderList :stores="stores"/>
       </div>
       <div class="StoreFinder__map">
         <!-- StoreFinderMap -->
@@ -15,8 +15,13 @@
 </template>
 
 <script>
+import StoreFinderList from './StoreFinderList.vue';
+
 export default {
   name: `StoreFinder`,
+  components: {
+    StoreFinderList,
+  },
   props: {
     stores: {
       default: () => [],

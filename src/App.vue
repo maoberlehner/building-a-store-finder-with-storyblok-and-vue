@@ -1,9 +1,12 @@
 <template>
-  <div class="App">
+  <div class="App o-container">
     <h1 class="App__headline">
       Store Finder
     </h1>
-    <StoreFinder :stores="stores"/>
+    <StoreFinder
+      :stores="stores"
+      class="App__store-finder"
+    />
   </div>
 </template>
 
@@ -37,6 +40,9 @@ export default {
 <style lang="scss">
 @import './assets/scss/settings/**/*';
 @import './assets/scss/generic/**/*';
+@import '{
+  .o-container,
+} from ~@avalanche/object-container';
 
 .App {
   padding-top: setting-spacing(xl);
@@ -45,5 +51,9 @@ export default {
 
 .App__headline {
   text-align: center;
+}
+
+.App__store-finder {
+  margin-top: setting-spacing(xxl);
 }
 </style>
