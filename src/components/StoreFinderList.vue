@@ -8,6 +8,7 @@
       v-for="store in stores"
       :key="store.id"
       :address="store.content.address"
+      :distance="store.distance"
       :name="store.name"
       :opening-hours="store.content.opening_hours"
       class="StoreFinderList__item"

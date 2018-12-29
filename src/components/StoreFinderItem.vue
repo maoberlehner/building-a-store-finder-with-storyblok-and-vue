@@ -4,6 +4,12 @@
       <div class="StoreFinderItem__section">
         <div class="StoreFinderItem__headline">
           {{ name }}
+          <span
+            v-if="distance"
+            class="StoreFinderItem__distance"
+          >
+            - {{ distance }} km
+          </span>
         </div>
         {{ address.postal_code }}
         {{ address.town }}<br>
@@ -51,6 +57,10 @@ export default {
       required: true,
       type: Object,
     },
+    distance: {
+      default: null,
+      type: Number,
+    },
     name: {
       default: ``,
       required: true,
@@ -86,5 +96,10 @@ export default {
   &:not(:first-child) {
     margin-top: setting-spacing(s);
   }
+}
+
+.StoreFinderItem__distance {
+  font-weight: normal;
+  color: #999;
 }
 </style>
