@@ -1,5 +1,9 @@
 <template>
-  <ul class="StoreFinderList">
+  <TransitionGroup
+    name="StoreFinderList__item-"
+    tag="ul"
+    class="StoreFinderList"
+  >
     <StoreFinderItem
       v-for="store in stores"
       :key="store.id"
@@ -8,7 +12,7 @@
       :opening-hours="store.content.opening_hours"
       class="StoreFinderList__item"
     />
-  </ul>
+  </TransitionGroup>
 </template>
 
 <script>
@@ -33,10 +37,22 @@ export default {
 @import '../assets/scss/settings/**/*';
 
 .StoreFinderList__item {
+  transition-duration: 0.3s;
+  transition-property: opacity, transform;
+
   &:not(:first-child) {
     margin-top: setting-spacing(m);
     padding-top: setting-spacing(m);
     border-top: 1px solid #e0e0e0;
   }
+}
+
+.StoreFinderList__item--enter,
+.StoreFinderList__item--leave-to {
+  opacity: 0;
+}
+
+.StoreFinderList__item--leave-active {
+  position: absolute;
 }
 </style>
