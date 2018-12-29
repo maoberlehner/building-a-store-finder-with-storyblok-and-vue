@@ -93,6 +93,7 @@ export default {
 .StoreFinder__list-wrap {
   padding: setting-spacing(m);
   overflow: auto;
+  background-color: #fff;
 }
 
 .StoreFinder__map-wrap {
