@@ -53,7 +53,7 @@ export default {
   },
   props: {
     address: {
-      default: () => {},
+      default: () => ({}),
       required: true,
       type: Object,
     },
@@ -67,7 +67,7 @@ export default {
       type: String,
     },
     openingHours: {
-      default: () => {},
+      default: () => ({}),
       required: true,
       type: Object,
     },

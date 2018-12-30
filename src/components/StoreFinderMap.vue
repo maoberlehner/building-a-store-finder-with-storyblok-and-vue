@@ -11,7 +11,7 @@ export default {
   name: `StoreFinderMap`,
   props: {
     currentLocation: {
-      default: () => {},
+      default: () => ({}),
       type: Object,
     },
     stores: {
