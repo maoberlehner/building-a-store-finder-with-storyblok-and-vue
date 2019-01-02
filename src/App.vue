@@ -4,6 +4,7 @@
       Store Finder
     </h1>
     <StoreFinder
+      v-if="stores.length"
       :stores="stores"
       class="App__store-finder"
     />
